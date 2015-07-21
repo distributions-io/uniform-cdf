@@ -6,8 +6,8 @@ Cumulative Distribution Function
 
 The [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="" data-equation="eq:cdf">
-	<img src="" alt="Cumulative distribution function for a Uniform distribution.">
+<div class="equation" align="center" data-raw-text="F(x)= \begin{cases} 0 & \text{for }x < a \\ \frac{x-a}{b-a} & \text{for }a \le x < b \\ 1 & \text{for }x \ge b \end{cases}" data-equation="eq:cdf">
+	<img src="https://cdn.rawgit.com/distributions-io/uniform-cdf/bbac242b18742f0823d2fa1661e92209350e62e5/docs/img/eqn.svg" alt="Cumulative distribution function for a Uniform distribution.">
 	<br>
 </div>
 
@@ -40,32 +40,32 @@ var matrix = require( 'dstructs-matrix' ),
 	i;
 
 out = cdf( 1 );
-// returns
+// returns 1
 
-x = [ -4, -2, 0, 2, 4 ];
+x = [ -0.1, 0.1, 0.2, 0.3, 0.4 ];
 out = cdf( x );
-// returns [...]
+// returns [ 0, 0.1, 0.2, 0.3, 0.4 ]
 
 x = new Float32Array( x );
 out = cdf( x );
-// returns Float64Array( [...] )
+// returns Float64Array( [0,0.1,0.2,0.3,0.4] )
 
 x = new Float32Array( 6 );
 for ( i = 0; i < 6; i++ ) {
-	x[ i ] = i - 3;
+	x[ i ] = i / 6 ;
 }
 mat = matrix( x, [3,2], 'float32' );
 /*
-	[ -3 -2
-	  -1  0
-	   1  2 ]
+	[  0  1/6
+	  2/6 3/6
+	  4/6 5/6 ]
 */
 
 out = cdf( mat );
 /*
-	[
-
-	   ]
+	[  0  1/6
+	  2/6 3/6
+	  4/6 5/6 ]
 */
 ```
 
@@ -85,10 +85,10 @@ A [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution is 
 var x = [ -4, -2, 0, 2, 4 ];
 
 var out = cdf( x, {
-	'a': 1,
-	'b': 1
+	'a': -3,
+	'b': 3
 });
-// returns [...]
+// returns [ 0, 1/6, 0.5, 5/6, 1 ]
 ```
 
 For non-numeric `arrays`, provide an accessor `function` for accessing `array` values.
@@ -107,9 +107,11 @@ function getValue( d, i ) {
 }
 
 var out = cdf( data, {
-	'accessor': getValue
+	'accessor': getValue,
+	'a': -3,
+	'b': 3
 });
-// returns [...]
+// returns [ 0, 1/6, 0.5, 5/6, 1 ]
 ```
 
 
@@ -126,15 +128,17 @@ var data = [
 
 var out = cdf( data, {
 	'path': 'x/1',
-	'sep': '/'
+	'sep': '/',
+	'a': -3,
+	'b': 3
 });
 /*
 	[
-		{'x':[0,]},
-		{'x':[1,]},
-		{'x':[2,]},
-		{'x':[3,]},
-		{'x':[4,]},
+		{'x':[0,0]},
+		{'x':[1,1/6]},
+		{'x':[2,0.5]},
+		{'x':[3,5/6]},
+		{'x':[4,1]},
 	]
 */
 
@@ -150,15 +154,19 @@ var x, out;
 x = new Float64Array( [-4,-2,0,2,4] );
 
 out = cdf( x, {
-	'dtype': 'float32'
+	'dtype': 'float32',
+	'a': -3,
+	'b': 3
 });
-// returns Float32Array( [...] )
+// returns Float32Array( [0,1/6,0.5,5/6,1] )
 
 // Works for plain arrays, as well...
 out = cdf( [-4,-2,0,2,4], {
-	'dtype': 'float32'
+	'dtype': 'float32',
+	'a': -3,
+	'b': 3
 });
-// returns Float32Array( [...] )
+// returns Float32Array( [0,1/6,0.5,5/6,1] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure (e.g., when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
@@ -170,34 +178,34 @@ var bool,
 	x,
 	i;
 
-x = [ -4, -2, 0, 2, 4 ];
+x = [ -0.1, 0.1, 0.2, 0.3, 0.4 ];
 
 out = cdf( x, {
 	'copy': false
 });
-// returns [...]
+// returns [ 0, 0.1, 0.2, 0.3, 0.4 ]
 
 bool = ( x === out );
 // returns true
 
 x = new Float32Array( 6 );
 for ( i = 0; i < 6; i++ ) {
-	x[ i ] = i - 3 ;
+	x[ i ] = i / 6;
 }
 mat = matrix( x, [3,2], 'float32' );
 /*
-	[ -3 -2
-	  -1  0
-	   1  2 ]
+	[  0  1/6
+	  2/6 3/6
+	  4/6 5/6 ]
 */
 
 out = cdf( mat, {
 	'copy': false
 });
 /*
-	[
-
-	   ]
+	[  0  1/6
+	  2/6 3/6
+	  4/6 5/6 ]
 */
 
 bool = ( mat === out );
