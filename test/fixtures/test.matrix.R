@@ -2,7 +2,7 @@ options( digits = 16 )
 library( jsonlite )
 
 a = 0
-b = 1
+b = 25
 x = 0:24
 y = punif( x, a,b )
 

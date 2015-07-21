@@ -111,6 +111,26 @@ describe( 'distributions-uniform-cdf', function tests() {
 		}
 	});
 
+	it( 'should throw an error if provided parameters `a` and `b` for which a >= b', function test() {
+		var values = [
+			[ 2, 1 ],
+			[ 3, 3 ],
+			[ -1, -2 ]
+		];
+
+		for ( var i = 0; i < values.length; i++ ) {
+			expect( badValue( values[i] ) ).to.throw( Error );
+		}
+		function badValue( value ) {
+			return function() {
+				cdf( [ 0.1, 0.2, 0.3, 0.4 ], {
+					'a': value[ 0 ],
+					'b': value[ 1 ]
+				});
+			};
+		}
+	});
+
 	it( 'should return NaN if the first argument is neither a number, array-like, or matrix-like', function test() {
 		var values = [
 			// '5', // valid as is array-like (length)

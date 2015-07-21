@@ -38,7 +38,7 @@ describe( 'number cdf', function tests() {
 		expect( cdf ).to.be.a( 'function' );
 	});
 
-	it( 'should evaluate the Uniform probability density function', function test() {
+	it( 'should evaluate the Uniform cdf', function test() {
 		var actual;
 		for ( var i = 0; i < data.length; i++ ) {
 			actual =  cdf( data[ i ], a, b );

@@ -1,8 +1,8 @@
 options( digits = 16 )
 library( jsonlite )
 
-a = 0
-b = 1
+a = -2000
+b = 2000
 x = seq( -1000, 1000, 0.5 )
 y = punif( x, a,b )
 

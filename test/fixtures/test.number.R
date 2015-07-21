@@ -1,8 +1,8 @@
 options( digits = 16 )
 library( jsonlite )
 
-a = 0
-b = 1
+a = -4
+b = 4
 x = c( -5, -2.5, 0, 2.5, 5 )
 y = punif( x, a,b )
 
