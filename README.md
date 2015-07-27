@@ -6,7 +6,7 @@ Cumulative Distribution Function
 
 The [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="F(x)= \begin{cases} 0 & \text{for }x < a \\ \frac{x-a}{b-a} & \text{for }a \le x < b \\ 1 & \text{for }x \ge b \end{cases}" data-equation="eq:cdf">
+<div class="equation" align="center" data-raw-text="F(x)= \begin{cases} 0 &amp; \text{for }x < a \\ \frac{x-a}{b-a} &amp; \text{for }a \le x < b \\ 1 &amp; \text{for }x \ge b \end{cases}" data-equation="eq:cdf">
 	<img src="https://cdn.rawgit.com/distributions-io/uniform-cdf/bbac242b18742f0823d2fa1661e92209350e62e5/docs/img/eqn.svg" alt="Cumulative distribution function for a Uniform distribution.">
 	<br>
 </div>
@@ -79,7 +79,7 @@ The function accepts the following `options`:
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution is a function of 2 parameter(s): `a`(minimum value) and `b`(maximum value). By default, `a` is equal to `0` and `b` is equal to `1`. To adjust either parameter, set the corresponding option(s).
+A [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution is a function of 2 parameters: `a`(minimum value) and `b`(maximum value). By default, `a` is equal to `0` and `b` is equal to `1`. To adjust either parameter, set the corresponding option.
 
 ``` javascript
 var x = [ -4, -2, 0, 2, 4 ];
@@ -275,7 +275,7 @@ var data,
 // Plain arrays...
 data = new Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
-	data[ i ] = i - 5;
+	data[ i ] = ( i + 1 ) / 10;
 }
 out = cdf( data );
 
@@ -306,7 +306,7 @@ out = cdf( data, {
 // Typed arrays...
 data = new Float32Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
-	data[ i ] = i - 5;
+	data[ i ] = ( i + 1 ) / 10;
 }
 out = cdf( data );
 
