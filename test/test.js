@@ -152,15 +152,13 @@ describe( 'distributions-uniform-cdf', function tests() {
 			data = validationData.data,
 			expected = validationData.expected.map( function( d ) {
 				return d === 'Inf' ? Infinity : d;
-			}),
-			a = validationData.a,
-		b = validationData.b;
+			});
 
 			var actual;
 			for ( var i = 0; i < data.length; i++ ) {
 				actual =  cdf( data[ i ], {
 					'a': validationData.a,
-		'b': validationData.b
+					'b': validationData.b
 				});
 				if ( isFiniteNumber( actual ) && isFiniteNumber( expected[ i ] ) ) {
 					assert.closeTo( actual, expected[ i ] , 1e-14 );
@@ -197,7 +195,7 @@ describe( 'distributions-uniform-cdf', function tests() {
 		actual = cdf( data, {
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.strictEqual( actual, data );
 
@@ -223,7 +221,7 @@ describe( 'distributions-uniform-cdf', function tests() {
 
 		actual = cdf( data, {
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.notEqual( actual, data );
 
@@ -237,7 +235,7 @@ describe( 'distributions-uniform-cdf', function tests() {
 		actual = cdf( data, {
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		expected = new Float32Array( validationData.expected.map( function( d ) {
 			return d === 'Inf' ? Infinity : d;
@@ -267,7 +265,7 @@ describe( 'distributions-uniform-cdf', function tests() {
 		actual = cdf( data, {
 			'dtype': 'float32',
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 
 		assert.notEqual( actual, data );
@@ -313,7 +311,7 @@ describe( 'distributions-uniform-cdf', function tests() {
 			'accessor': getValue,
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.strictEqual( actual, data );
 
@@ -342,7 +340,7 @@ describe( 'distributions-uniform-cdf', function tests() {
 		actual = cdf( data, {
 			'path': 'x.1',
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 
 		expected = validationData.expected
@@ -369,7 +367,7 @@ describe( 'distributions-uniform-cdf', function tests() {
 			'path': 'x/1',
 			'sep': '/',
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.strictEqual( actual, data );
 
@@ -396,7 +394,7 @@ describe( 'distributions-uniform-cdf', function tests() {
 		mat = matrix( d1, [5,5], 'float64' );
 		out = cdf( mat, {
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 
 		for ( i = 0; i < out.length; i++ ) {
@@ -435,7 +433,7 @@ describe( 'distributions-uniform-cdf', function tests() {
 		out = cdf( mat, {
 			'dtype': 'float32',
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 
 		assert.strictEqual( out.dtype, 'float32' );
