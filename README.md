@@ -1,17 +1,17 @@
 Cumulative Distribution Function
 ===
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][codecov-image]][codecov-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function).
 
-The [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) random variable is
+The [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [continuous uniform](https://en.wikipedia.org/wiki/Uniform_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="F(x)= \begin{cases} 0 &amp; \text{for }x < a \\ \frac{x-a}{b-a} &amp; \text{for }a \le x < b \\ 1 &amp; \text{for }x \ge b \end{cases}" data-equation="eq:cdf">
-	<img src="https://cdn.rawgit.com/distributions-io/uniform-cdf/bbac242b18742f0823d2fa1661e92209350e62e5/docs/img/eqn.svg" alt="Cumulative distribution function for a Uniform distribution.">
+	<img src="https://cdn.rawgit.com/distributions-io/uniform-cdf/bbac242b18742f0823d2fa1661e92209350e62e5/docs/img/eqn.svg" alt="Cumulative distribution function for a uniform distribution.">
 	<br>
 </div>
 
-where `a` is the minimum value and `b` is the maximum value.
+where `a` is the minimum support and `b` is the maximum support. The parameters must satisfy `a < b`.
 
 ## Installation
 
@@ -30,7 +30,7 @@ var cdf = require( 'distributions-uniform-cdf' );
 
 #### cdf( x[, options] )
 
-Evaluates the [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for the [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
+Evaluates the [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for the [continuous uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
@@ -71,15 +71,15 @@ out = cdf( mat );
 
 The function accepts the following `options`:
 
-*	__a__: minimum value. Default: `0`.
-*	__b__: maximum value. Default: `1`.
+*	__a__: minimum support. Default: `0`.
+*	__b__: maximum support. Default: `1`.
 * 	__accessor__: accessor `function` for accessing `array` values.
 * 	__dtype__: output [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays) or [`matrix`](https://github.com/dstructs/matrix) data type. Default: `float64`.
 *	__copy__: `boolean` indicating if the `function` should return a new data structure. Default: `true`.
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution is a function of 2 parameters: `a`(minimum value) and `b`(maximum value). By default, `a` is equal to `0` and `b` is equal to `1`. To adjust either parameter, set the corresponding option.
+A [continuous uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution is a function of two parameters: `a`(minimum support) and `b`(maximum support). By default, `a` is equal to `0` and `b` is equal to `1`. To adjust either parameter, set the corresponding option.
 
 ``` javascript
 var x = [ -4, -2, 0, 2, 4 ];
@@ -372,8 +372,8 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [travis-image]: http://img.shields.io/travis/distributions-io/uniform-cdf/master.svg
 [travis-url]: https://travis-ci.org/distributions-io/uniform-cdf
 
-[coveralls-image]: https://img.shields.io/coveralls/distributions-io/uniform-cdf/master.svg
-[coveralls-url]: https://coveralls.io/r/distributions-io/uniform-cdf?branch=master
+[codecov-image]: https://img.shields.io/codecov/c/github/distributions-io/uniform-cdf/master.svg
+[codecov-url]: https://codecov.io/github/distributions-io/uniform-cdf?branch=master
 
 [dependencies-image]: http://img.shields.io/david/distributions-io/uniform-cdf.svg
 [dependencies-url]: https://david-dm.org/distributions-io/uniform-cdf

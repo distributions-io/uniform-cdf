@@ -296,7 +296,7 @@ describe( 'distributions-uniform-cdf', function tests() {
 		actual = cdf( data, {
 			'accessor': getValue,
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.notEqual( actual, data );
 
@@ -407,7 +407,7 @@ describe( 'distributions-uniform-cdf', function tests() {
 		out = cdf( mat, {
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.strictEqual( mat, out );
 
